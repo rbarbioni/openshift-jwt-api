@@ -26,6 +26,6 @@ Instructions
 
 * Create account https://www.openshift.com/app/account/new
 * Install rhc client tools https://developers.openshift.com/en/managing-client-tools.html
-* rhc create-app store tomcat-7 --from-code https://github.com/rbarbioni/openshift-jwt-api.git
+* rhc create-app store_jwt tomcat-7 --from-code https://github.com/rbarbioni/openshift-jwt-api.git
 * Import your favorite IDE compatible MAVEN projects.
 * Change code, commit and push
