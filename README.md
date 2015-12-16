@@ -29,3 +29,13 @@ Instructions
 * rhc create-app storejwt tomcat-7 --from-code https://github.com/rbarbioni/openshift-jwt-api.git
 * Import your favorite IDE compatible MAVEN projects.
 * Change code, commit and push
+
+JWT
+-------
+
+Simple Authentication [GET,POST] http://localhost:8080/api/auth?username=master&password=master
+token eyJhbGciOiJub25lIn0.eyJzdWIiOiJtYXN0ZXIifQ.
+Add token request parameter or header x-key
+http://localhost:8080/api/product?key=eyJhbGciOiJub25lIn0.eyJzdWIiOiJtYXN0ZXIifQ.
+
+
