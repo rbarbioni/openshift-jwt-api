@@ -33,9 +33,14 @@ Instructions
 JWT
 -------
 
-Simple Authentication [GET,POST] http://localhost:8080/api/auth?username=master&password=master
+Simple Authentication
+
+[GET,POST]
+http://localhost:8080/api/auth?username=master&password=master
 token eyJhbGciOiJub25lIn0.eyJzdWIiOiJtYXN0ZXIifQ.
+
 Add token request parameter or header x-key
+
 http://localhost:8080/api/product?key=eyJhbGciOiJub25lIn0.eyJzdWIiOiJtYXN0ZXIifQ.
 
 
