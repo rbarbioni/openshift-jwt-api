@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Key;
 import java.util.Arrays;
@@ -29,6 +30,7 @@ public class HttpSecurityFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         if (Arrays.asList(ApiWebApplicationContext.ALLOWED_PATH).contains(request.getPathInfo())){
             filterChain.doFilter(servletRequest, servletResponse);
@@ -43,6 +45,13 @@ public class HttpSecurityFilter implements Filter {
             String[] keyHeader = servletRequest.getParameterMap().get(HEADER_SECURITY_KEY);
             if ( keyHeader != null && keyHeader.length > 0)
             key = keyHeader[0];
+        }
+
+            if ( key == null || "".equals(key)){
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.sendError( HttpServletResponse.SC_UNAUTHORIZED );
+            filterChain.doFilter(request, response);
+            return;
         }
 
         Jwts.parser().setSigningKey(secretKey).parse(key);
